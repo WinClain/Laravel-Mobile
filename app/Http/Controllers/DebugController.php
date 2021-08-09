@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Log;
 use Illuminate\Http\Request;
 use App\Models\User;
 
@@ -14,8 +15,7 @@ class DebugController extends Controller
     }
 
     public function debug() {
-        $user = User::where('email','sdsdsd')->first();
-        $this->myDebug($user);
-        return view('debug-view');
+        $logs = Log::get();
+        return view('debug-view',compact('logs'));
     }
 }
